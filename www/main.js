@@ -507,6 +507,21 @@ $(document).ready(function () {
     eel.displayWebCommand()();
     eel.displayPhoneBookCommand()();
 
+
+    //execute: python side: 
+  eel.expose(getData)
+  function getData(user_info) {
+    let data = JSON.parse(user_info);
+    let idsPersonalInfo = ['OwnerName', 'Designation', 'MobileNo', 'Email', 'City'];
+    let idsInputInfo = ['InputOwnerName', 'InputDesignation', 'InputMobileNo', 'InputEmail', 'InputCity'];
+
+    for (let i = 0; i < data.length; i++) {
+        hashid = "#" + idsPersonalInfo[i]
+        $(hashid).text(data[i]);
+        $("#" + idsPersonalInfo[i]).val(data[i]);
+    }
+} 
+
     // 6. Update Personal Info Button
     $("#UpdateBtn").click(function () {
         let OwnerName = $("#InputOwnerName").val();
@@ -516,15 +531,46 @@ $(document).ready(function () {
         let City = $("#InputCity").val();
 
         if (OwnerName.length > 0 && Designation.length > 0 && MobileNo.length > 0 && Email.length > 0 && City.length > 0) {
-            eel.updatePersonalInfo(OwnerName, Designation, MobileNo, Email, City);
-            swal({ title: "Updated Successfully", icon: "success" });
-        } else {
+            eel.updatePersonalInfo(OwnerName, Designation, MobileNo, Email, City)
+
+            swal({ 
+                title: "Updated Successfully", 
+                icon: "success" 
+            });
+
+        } 
+        else {
             const toastLiveExample = document.getElementById('liveToast');
             const toast = new bootstrap.Toast(toastLiveExample);
             $("#ToastMessage").text("All Fields Mandatory");
-            toast.show();
+            toast.show()
         }
     });
+
+    // Display system command method
+   eel.expose(displaySysCommand)
+   function displaySysCommand(array) {
+    let data = JSON.parse(array);
+    console.log(data)
+
+    let placeholder = document.querySelector("#TableData");
+    let out = "";
+    let index = 0
+    for(let i = 0; i < data.length; i++) {
+        out += `
+                <tr>
+                    <td class="text-light">${index + 1}</td>
+                    <td class="text-light">${data[1]}</td>
+                    <td class="text-light">${data[2]}</td>
+                    <td class="text-light"><button id="${data[0]}" onClick="SysDeleteID(this.id)" class="btn btn-sm btn-glow-red">Delete</button></td>
+                </tr>
+        `;
+
+    }
+
+    placeholder.innerHTML = out;
+        
+}
 
     // 7. Add Command Buttons
     $("#SysCommandAddBtn").click(function () {
@@ -532,24 +578,96 @@ $(document).ready(function () {
         let value = $("#SysCommandValue").val();
         if (key.length > 0 && value.length > 0) {
             eel.addSysCommand(key, value);
-            swal({ title: "Updated Successfully", icon: "success" });
+            swal({
+                 title: "Updated Successfully",
+                  icon: "success" });
             eel.displaySysCommand()();
             $("#SysCommandKey").val("");
             $("#SysCommandValue").val("");
         }
+        else{
+            const toastLiveExample = document.getElementById('liveToast')
+            const toast = new bootstrap.Toast(toastLiveExample)
+
+            $("ToastMessage").text("All Fields Medatory");
+            toast.show()
+        }
     });
+// Display web commands table 
+eel.expose(displayWebCommand);
+function displayWebCommand(array) {
+    let data = JSON.parse(array);
+    console.log(data)
+
+    let placeholder = document.querySelector("#WebTableData");
+    let out = "";
+    let index = 0;
+    for(let i = 0; i < data.length; i++) {
+        index++
+        out += `
+            <tr>
+                <td class="text-light">${index + 1}</td>
+                <td class="text-light">${data[i][1]}</td>
+                <td class="text-light">${data[i][2]}</td>
+                <td class="text-light"><button id="${data[i][0]}" onClick="WebDeleteID(this.id)" class="btn btn-sm btn-glow-red">Delete</button></td>
+            </tr>
+        `;
+    }
+    placeholder.innerHTML = out;
+}
 
     $("#WebCommandAddBtn").click(function () {
+
         let key = $("#WebCommandKey").val();
         let value = $("#WebCommandValue").val();
+
         if (key.length > 0 && value.length > 0) {
             eel.addWebCommand(key, value);
-            swal({ title: "Updated Successfully", icon: "success" });
+
+            swal({ 
+                title: "Updated Successfully", 
+                icon: "success"
+             });
             eel.displayWebCommand()();
             $("#WebCommandKey").val("");
             $("#WebCommandValue").val("");
         }
+        else{
+            const toastLiveExample = document.getElementById('liveToast')
+            const toast= new bootstrap.Toast(toastLiveExample)
+
+            $("ToastMessage").text("All Fields Medatory");
+            toast.show()
+        }
     });
+
+    // Display phone book commands table
+
+    eel.expose(displayPhoneBookCommand);
+    function displayPhoneBookCommand(array) {
+        let data = JSON.parse(array);
+        console.log(data)
+
+        let placeholder = document.querySelector("#ContactTableData");
+        let out = "";
+        let index = 0;
+        for(let i = 0; i< data.length; i++) {
+            index++
+            out += `
+                    <tr>
+                        <td class="text-light">${index}</td>
+                        <td class="text-light">${data[i][1]}</td>
+                        <td class="text-light">${data[i][2]}</td>
+                        <td class="text-light">${data[i][3]}</td>
+                        <td class="text-light">${data[i][4]}</td>
+                        <td class="text-light"><button id="${data[i][0]}" onClick="ContactDeleteID(this.id)" class="btn btn-sm btn-glow-red">Delete</button></td>
+                    </tr>
+            `;
+    }
+    placeholder.innerHTML = out;
+}
+
+
 
     $("#AddContactBtn").click(function () {
         let Name = $("#InputContactName").val();
@@ -558,85 +676,39 @@ $(document).ready(function () {
         let City = $("#InputContactCity").val();
 
         if (Name.length > 0 && MobileNo.length > 0) {
+
+            if(Email.length <0) {
+                Email = "";
+            }
+            else if (City < 0) {
+                City = "";
+            }
             eel.InsertContacts(Name, MobileNo, Email, City);
-            swal({ title: "Updated Successfully", icon: "success" });
+
+            swal({ 
+                title: "Updated Successfully", 
+                icon: "success" 
+            });
             $("#InputContactName").val("");
             $("#InputContactMobileNo").val("");
             $("#InputContactEmail").val("");
             $("#InputContactCity").val("");
             eel.displayPhoneBookCommand()();
         }
+        else{
+            const toastLiveExample = document.getElementById('liveToast')
+            const toast = new bootstrap.Toast(toastLiveExample)
+
+            $("#ToastMessage").text("Name and Moblie number Madatory");
+            
+            toast.show()
+        }
     });
 
 }); // End of Document Ready
 
-// --- Global Eel Exposed Functions (Keep these outside $(document).ready) ---
-
-eel.expose(getData);
-function getData(user_info) {
-    let data = JSON.parse(user_info);
-    let idsPersonalInfo = ['OwnerName', 'Designation', 'MobileNo', 'Email', 'City'];
-    let idsInputInfo = ['InputOwnerName', 'InputDesignation', 'InputMobileNo', 'InputEmail', 'InputCity'];
-
-    for (let i = 0; i < data.length; i++) {
-        $("#" + idsPersonalInfo[i]).text(data[i]);
-        $("#" + idsInputInfo[i]).val(data[i]);
-    }
-}
-
-eel.expose(displaySysCommand);
-function displaySysCommand(array) {
-    let data = JSON.parse(array);
-    let placeholder = document.querySelector("#TableData");
-    let out = "";
-    data.forEach((item, index) => {
-        out += `<tr>
-            <td class="text-light">${index + 1}</td>
-            <td class="text-light">${item[1]}</td>
-            <td class="text-light">${item[2]}</td>
-            <td class="text-light"><button id="${item[0]}" onClick="SysDeleteID(this.id)" class="btn btn-sm btn-glow-red">Delete</button></td>
-        </tr>`;
-    });
-    placeholder.innerHTML = out;
-}
-
-eel.expose(displayWebCommand);
-function displayWebCommand(array) {
-    let data = JSON.parse(array);
-    let placeholder = document.querySelector("#WebTableData");
-    let out = "";
-    data.forEach((item, index) => {
-        out += `<tr>
-            <td class="text-light">${index + 1}</td>
-            <td class="text-light">${item[1]}</td>
-            <td class="text-light">${item[2]}</td>
-            <td class="text-light"><button id="${item[0]}" onClick="WebDeleteID(this.id)" class="btn btn-sm btn-glow-red">Delete</button></td>
-        </tr>`;
-    });
-    placeholder.innerHTML = out;
-}
-
-eel.expose(displayPhoneBookCommand);
-function displayPhoneBookCommand(array) {
-    let data = JSON.parse(array);
-    let placeholder = document.querySelector("#ContactTableData");
-    let out = "";
-    data.forEach((item, index) => {
-        out += `<tr>
-            <td class="text-light">${index + 1}</td>
-            <td class="text-light">${item[1]}</td>
-            <td class="text-light">${item[2]}</td>
-            <td class="text-light">${item[3]}</td>
-            <td class="text-light">${item[4]}</td>
-            <td class="text-light"><button id="${item[0]}" onClick="ContactDeleteID(this.id)" class="btn btn-sm btn-glow-red">Delete</button></td>
-        </tr>`;
-    });
-    placeholder.innerHTML = out;
-}
-
-// --- Delete Functions (Global scope so HTML onClick can find them) ---
-
 function SysDeleteID(clicked_id) {
+
     eel.deleteSysCommand(clicked_id);
     eel.displaySysCommand()();
 }

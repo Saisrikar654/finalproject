@@ -1,3 +1,403 @@
+/* body{
+    background-color: rgb(0, 0, 0);
+    overflow-y: hidden;
+    overflow-x: hidden;
+}     */
+/* .square{
+    position: relative;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+/* .square span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#0b0b0b00 50%, #e41717 40%);
+    box-shadow: 10px 10px 50px rgb(224, 30, 30), inset 0 0 50px rgb(224, 30, 30);
+    border-radius: 40% 60% 50% 40% / 40% 40% 50% 50%;
+    transition: 10s;
+} */
+/* .square span:nth-child(1){
+    transition: 0.5s; animation: animate1 6s linear infinite;
+
+} */
+
+ /* .square span:nth-child(2){
+   transition: 0.5s;  animation: animate3 2s linear infinite;
+
+} */
+/* .square span:nth-child(3){
+   transition: 0.5s; animation: animate3 4s linear infinite;
+
+} */
+/* @keyframes animate1{
+    0%{ transition: rotate(0deg);}
+    100%{transform: rotate(360deg)}
+} */
+/* @keyframes animate2{
+    0%{transition: rotate(0deg);}
+    100%{transform: rotate(360deg)}
+} */
+/* @keyframes animate3{
+    0%{transition: rotate(0deg);}
+    100%{transform: rotate(360deg)}
+} */
+/* .title-text {
+  color: rgb(39, 19, 219);
+  font-size: 24px;
+  font-weight: bold;
+  z-index: 10;
+  position: relative;
+  text-align: center;
+} */
+
+/* .text {
+  font-weight: bold;
+} */
+
+/*input css*/
+/* #TextInput {
+    background-color: #181818a8;
+    border-color: blue;
+    box-shadow: 0 0 20px rgb(25, 0, 255),
+      inset 0 0 0px rgb(25, 0, 255);
+    border-radius: 8px;
+    color: white;
+    padding: 3px 0px 3px 20px;
+    margin: 0px 20%;
+  } */
+  
+  /* .input-field {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    outline: none;
+    color: white;
+    font-family: cursive;
+  } */
+  
+/*   
+  .glow-on-hover {
+    width: 35px;
+    height: 35px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    padding: 0px;
+    margin-left: 10px;
+  }
+   */
+  /* .glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+  } */
+  
+  /* .glow-on-hover:active {
+    color: #181818a8
+  } */
+  
+  /* .glow-on-hover:active:after {
+    background: transparent;
+  }
+   */
+  /* .glow-on-hover:hover:before {
+    opacity: 1;
+  }
+   */
+  /* .glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  } */
+  
+  /* @keyframes glowing {
+    0% {
+      background-position: 0 0;
+    }
+  
+    50% {
+      background-position: 400% 0;
+    }
+  
+    100% {
+      background-position: 0 0;
+    }
+  } */
+  
+  
+  /* Input Filed End*/
+
+  /* Chat Box Start */
+
+/* .chat-canvas{
+  background-color: #191919
+} */
+
+/* .receiver_message{
+  padding: 8px;
+  border: 2px solid cyan;
+  border-radius: 0px 15px 15px 20px;
+  width: auto;
+  color: white;
+  background-color: #0dcaf014;
+} */
+
+/* .sender_message{
+  padding: 8px;
+  border: 1px solid #fc0a0a;
+  border-radius: 15px 15px 0px 20px;
+  width: auto;
+  color: white;
+  background-color: #ff0000;
+} */
+/* .width-size{
+  max-width: 80%;
+  width: auto;
+} */
+/* Chat Box Start End*/
+
+/* 
+.svg-frame {
+  position: relative;
+  width: 455px;
+  height: 455px;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: change-view 2s ease-in infinite;
+} */
+
+/* @keyframes change-view {
+
+  0%,
+  50% {
+    transform: rotate(-0deg) skew(00deg) translateX(calc(0 * var(--i))) translateY(calc(-0px * var(--i)));
+  }
+
+  70%,
+  100% {
+    transform: rotate(-80deg) skew(30deg) translateX(calc(45px * var(--i))) translateY(calc(-35px * var(--i)));
+  }
+} */
+/* 
+svg {
+  position: absolute;
+  transition: 0.5s;
+  transform-origin: center;
+  width: 450px;
+  height: 450px;
+  fill: none;
+  animation: change-view 5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 12px #dd0101);
+} */
+
+/* #big-centro,
+#outter1,
+#solo-lines,
+#center,
+#outter-center,
+#bottom-dots,
+#center-lines,
+#squares,
+#top-dots {
+  transform-origin: center;
+  animation: rotate 4s ease-in-out infinite alternate;
+} */
+
+/* #big-centro {
+  animation-delay: -1.5s;
+} */
+/* 
+#outter1 {
+  animation-delay: -1.2s;
+} */
+
+/* #center {
+  animation-delay: -2.2s;
+} */
+
+/* #bottom-dots,
+#top-dots {
+  animation-duration: 7s;
+} */
+
+/* #center-lines,
+#outter-center {
+  animation-duration: 6s;
+  animation-delay: -3s;
+} */
+/* 
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+/* .glass-effect {
+  background: rgb(119, 118, 118);
+  border: #e60b0b 1px;
+  box-shadow: 0 0 20px rgb(231, 5, 5),
+    inset 0 0 0px rgb(230, 5, 5);
+} */
+/* .glass-effect p{
+  color: rgb(74, 72, 72);
+} */
+/* 
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .glass-effect {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+} */
+
+/* .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  background-color: #e60d0d;
+  color: white;
+  border: none;
+  box-shadow: 0 0 20px rgb(230, 6, 6),
+    inset 0 0 0px rgb(223, 7, 7);
+} */
+
+/* .nav-tabs {
+  border-bottom: none
+} */
+
+/* .modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.295);
+} */
+
+/* .glassy-form {
+
+  color: white;
+  background-color: #ffffff1a;
+  border: 1px solid rgba(255, 255, 255, 0.295);
+
+} */
+
+/* .glassy-form:focus {
+  color: white;
+  background-color: #1a1a1aba;
+  border: 1px solid rgba(255, 255, 255, 0.272);
+} */
+
+/* .nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  background-color: transparent;
+} */
+/* 
+.btn-glow {
+  background-color: rgb(0, 255, 81);
+  width: 20%;
+  color: rgb(63, 58, 58);
+  border: none;
+  box-shadow: 0 0 20px rgb(0, 255, 55),
+    inset 0 0 0px rgb(25, 255, 55);
+} */
+
+/* .btn-glow:hover {
+  background-color: rgb(0, 190, 41);
+  color: wheat;
+} */
+
+/* .btn-glow:focus {
+  color: white;
+  background-color: rgb(0, 255, 55);
+  box-shadow: 0 0 30px rgb(0, 255, 55),
+    inset 0 0 0px rgb(25, 255, 55);
+} */
+
+/* .btn-glow-red {
+  background-color: rgb(255, 0, 0);
+  color: white;
+  border: none;
+  box-shadow: 0 0 20px rgb(255, 0, 0),
+    inset 0 0 0px rgb(255, 0, 0), ;
+} */
+
+/* .btn-glow-red:hover {
+  color: wheat;
+  background-color: rgb(212, 0, 0)
+} */
+
+/* .btn-glow-red:focus {
+  color: white;
+  background-color: rgb(255, 0, 0);
+  box-shadow: 0 0 30px rgb(255, 0, 0),
+    inset 0 0 0px rgb(255, 0, 0);
+} */
+
+/* Glass Effect Modal */
+
+
+/* Table Scroll Property */
+
+
+/* .table-scroll {
+  height: 270px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+} */
+
+/* width */
+/* ::-webkit-scrollbar {
+  width: 5px;
+  height: 40px;
+
+} */
+
+/* Track */
+/* ::-webkit-scrollbar-track {
+  border-radius: 20px;
+} */
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+  background: #272727;
+  border-radius: 20px;
+} */
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #353535;
+} */
+/* .toast-container{
+  z-index: 9999; 
+} */
+
+/* Table Scroll Property */
+
+
 body{
     background-color: rgb(0, 0, 0);
     overflow-y: hidden;
@@ -172,11 +572,11 @@ body{
 
 .sender_message{
   padding: 8px;
-  border: 1px solid #0045ff;
+  border: 1px solid #fc0a0a;
   border-radius: 15px 15px 0px 20px;
   width: auto;
   color: white;
-  background-color: #0045ff;
+  background-color: #ff0000;
 }
 .width-size{
   max-width: 80%;
@@ -217,7 +617,7 @@ svg {
   height: 450px;
   fill: none;
   animation: change-view 5s ease-in-out infinite alternate;
-  filter: drop-shadow(0 0 12px #00aaff);
+  filter: drop-shadow(0 0 12px #dd0101);
 }
 
 #big-centro,
@@ -263,15 +663,23 @@ svg {
 }
 
 .glass-effect {
-  background: rgba(0, 0, 0, 0.205);
-  border: #002bff 1px;
-  box-shadow: 0 0 20px rgb(25, 0, 255),
-    inset 0 0 0px rgb(25, 0, 255);
-}
-.glass-effect p{
-  color: white;
+    /* Lower the last number (0.2) to make it more or less transparent */
+    background: rgba(255, 255, 255, 0.1) !important; 
+    border: #e60b0b 1px solid;
+    box-shadow: 0 0 20px rgb(231, 5, 5),
+                inset 0 0 0px rgb(230, 5, 5);
+    
+    /* This makes the background blurry for a "glass" look */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 }
 
+/* Also ensure the text inside stays white/visible */
+.glass-effect p, 
+.glass-effect span, 
+.glass-effect .text {
+    color: white !important;
+}
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .glass-effect {
     -webkit-backdrop-filter: blur(10px);
@@ -281,11 +689,11 @@ svg {
 
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
-  background-color: #002bff;
+  background-color: #e60d0d;
   color: white;
   border: none;
-  box-shadow: 0 0 20px rgb(25, 0, 255),
-    inset 0 0 0px rgb(25, 0, 255);
+  box-shadow: 0 0 20px rgb(230, 6, 6),
+    inset 0 0 0px rgb(223, 7, 7);
 }
 
 .nav-tabs {
@@ -307,7 +715,7 @@ svg {
 .glassy-form:focus {
   color: white;
   background-color: #1a1a1aba;
-  border: 1px solid rgba(255, 255, 255, 0.295);
+  border: 1px solid rgba(255, 255, 255, 0.272);
 }
 
 .nav-pills .nav-link.active,
@@ -316,9 +724,9 @@ svg {
 }
 
 .btn-glow {
-  background-color: rgb(0, 255, 55);
+  background-color: rgb(0, 255, 81);
   width: 20%;
-  color: white;
+  color: rgb(63, 58, 58);
   border: none;
   box-shadow: 0 0 20px rgb(0, 255, 55),
     inset 0 0 0px rgb(25, 255, 55);
@@ -395,4 +803,21 @@ svg {
   z-index: 9999; 
 }
 
-/* Table Scroll Property */
+/* --- Table Transparency Fix --- */
+.table-scroll table, 
+.table-scroll thead, 
+.table-scroll tbody, 
+.table-scroll tr, 
+.table-scroll td, 
+.table-scroll th {
+    background-color: transparent !important;
+    color: white !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Force Bootstrap table variables to transparent */
+.table-scroll .table {
+    --bs-table-bg: transparent !important;
+    --bs-table-color: white !important;
+    background-color: transparent !important;
+}
