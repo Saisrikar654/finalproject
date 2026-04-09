@@ -3,6 +3,7 @@ import eel
 from engine.features import *
 from engine.command import *
 from engine.auth import recoganize
+import subprocess
 
 
 def start():

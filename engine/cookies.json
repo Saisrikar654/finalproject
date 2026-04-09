@@ -1,7 +1,7 @@
 [
     {
         "domain": "huggingface.co",
-        "expirationDate": 1771870446.73391,
+        "expirationDate": 1775763147.558314,
         "hostOnly": true,
         "httpOnly": true,
         "name": "hfChat-codeVerifier",
@@ -10,7 +10,7 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "QRQCQ77oeb8eFiWECjWfdH4EREsBrJSW2PF_bionY2U"
+        "value": "8mFTKC9ak2eRUuZl8ENer7QrCduSVzYuBzROaaz9Dlk"
     },
     {
         "domain": ".huggingface.co",
@@ -26,34 +26,8 @@
         "value": "d799f3e5-f506-4953-81c0-d9ff5a29f25c42079e"
     },
     {
-        "domain": ".huggingface.co",
-        "expirationDate": 1772212458,
-        "hostOnly": false,
-        "httpOnly": false,
-        "name": "aws-waf-token",
-        "path": "/",
-        "sameSite": "lax",
-        "secure": true,
-        "session": false,
-        "storeId": null,
-        "value": "71aa96fc-467f-4a0a-9dd1-547a7ee6771f:HgoAikR4I6W/AAAA:eVMLRBCSdMtSMnVnBHVrkzOKpv5xUCFkyT1v/AXwPbJ1LaKIiGi+5OKFj7zHQcrCMC5VcF6JxMvtQ/B941wWK+wgnTYF95dJP/oPHtaNlH9RShOIJRmkJXGUvaDhx85zJy7tBp3uRJSQixNu2QHspGOoglzCl9WvIVAqTz9Ozbi1aktc0cuYSP8Mnrj1JjlmDtX3donHOZepY/dybWqNCsojNt3PS6f+wzc="
-    },
-    {
-        "domain": ".huggingface.co",
-        "expirationDate": 1771868649,
-        "hostOnly": false,
-        "httpOnly": false,
-        "name": "__stripe_sid",
-        "path": "/",
-        "sameSite": "strict",
-        "secure": true,
-        "session": false,
-        "storeId": null,
-        "value": "0df36d4d-602b-4539-ac5d-41bd2ff75067260011"
-    },
-    {
         "domain": "huggingface.co",
-        "expirationDate": 1773076469.978892,
+        "expirationDate": 1776969154.11402,
         "hostOnly": true,
         "httpOnly": true,
         "name": "hf-chat",
@@ -62,7 +36,7 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "42da22f1-be04-466f-82c4-70f8558c2d87"
+        "value": "1b3d2901-842a-436e-b3d0-8838db4c6310"
     },
     {
         "domain": "huggingface.co",

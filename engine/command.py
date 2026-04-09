@@ -101,8 +101,8 @@ def allCommands(message=1):
                     whatsApp(contact_no, query, message, name)
 
         else:
-            from engine.features import geminai
-            geminai(query)
+            from engine.features import chatBot
+            chatBot(query)
     except:
         print("error")
     

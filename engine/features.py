@@ -76,82 +76,103 @@ def PlayYoutube(query):
 # -------------------------------
 # Hotword detection function
 # -------------------------------
+from pocketsphinx import LiveSpeech
+
 def hotword():
-    porcupine = None
-    paud = None
-    audio_stream = None
-
+    print("Listening for 'SUNDAY'...")
     try:
-        # -------------------------------
-        # Correct project root path
-        # -------------------------------
-        PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        KEYWORD_PATH = os.path.join(PROJECT_ROOT, "engine", "hotword", "sunday_en_windows_v3_0_0.ppn")
-        KEYWORD_PATH = os.path.abspath(KEYWORD_PATH)
-
-        print("Using keyword file:", KEYWORD_PATH)
-        print("Does file exist?:", os.path.exists(KEYWORD_PATH))
-
-        if not os.path.exists(KEYWORD_PATH):
-            raise FileNotFoundError("❌ Hotword file not found!")
-
-        # -------------------------------
-        # Initialize Porcupine
-        # -------------------------------
-        porcupine = pvporcupine.create(
-            access_key="AHyqGTYq+h1ge88Hu/Cmod/QqJJH+yjpy+2qFT4JI2zjZcjs156G/Q==",  # Replace with your Picovoice AccessKey
-            keyword_paths=[KEYWORD_PATH]
-        )
-
-        # -------------------------------
-        # Initialize PyAudio
-        # -------------------------------
-        paud = pyaudio.PyAudio()
-        audio_stream = paud.open(
-            rate=porcupine.sample_rate,
-            channels=1,
-            format=pyaudio.paInt16,
-            input=True,
-            frames_per_buffer=porcupine.frame_length
-        )
-
-        print("Say 'SUNDAY' to activate...")
-        # print("Say 'SUNDAY' to activate...")
-        # -------------------------------
-        # Listening loop
-        # -------------------------------
-        while True:
-            pcm = audio_stream.read(porcupine.frame_length, exception_on_overflow=False)
-            pcm = struct.unpack_from("h" * porcupine.frame_length, pcm)
-
-            if porcupine.process(pcm) >= 0:
-                print("🎉 SUNDAY detected!")
-                # Example action on detection
-                autogui.keyDown("win")
-                autogui.press("o")
-                time.sleep(1)
-                autogui.keyUp("win")
+        # Initialize the offline engine
+        speech = LiveSpeech(keyphrase='sunday', kws_threshold=1e-20)
+        
+        for phrase in speech:
+            print(f"🎉 Detected: {phrase}")
+            
+            # DIRECT CALL: This bypasses the keyboard and talks to main.js
+            eel.triggerSiriWave()() 
+            
+            # Pause for 2 seconds so it doesn't loop while the assistant is talking
+            time.sleep(2) 
 
     except Exception as e:
-        print("Error during hotword setup or processing:", e)
-
-    finally:
-        # -------------------------------
-        # Cleanup
-        # -------------------------------
-        if porcupine:
-            porcupine.delete()
-        if audio_stream:
-            audio_stream.close()
-        if paud:
-            paud.terminate()
+        print(f"Hotword Error: {e}")
 
 
-# -------------------------------
-# Run hotword directly for testing
-# -------------------------------
-if __name__ == "__main__":
-    hotword()
+# def hotword():
+#     porcupine = None
+#     paud = None
+#     audio_stream = None
+
+#     try:
+#         # -------------------------------
+#         # Correct project root path
+#         # -------------------------------
+#         PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#         KEYWORD_PATH = os.path.join(PROJECT_ROOT, "engine", "hotword", "sunday_en_windows_v3_0_0.ppn")
+#         KEYWORD_PATH = os.path.abspath(KEYWORD_PATH)
+
+#         print("Using keyword file:", KEYWORD_PATH)
+#         print("Does file exist?:", os.path.exists(KEYWORD_PATH))
+
+#         if not os.path.exists(KEYWORD_PATH):
+#             raise FileNotFoundError("❌ Hotword file not found!")
+
+#         # -------------------------------
+#         # Initialize Porcupine
+#         # -------------------------------
+#         porcupine = pvporcupine.create(
+#             access_key="AHyqGTYq+h1ge88Hu/Cmod/QqJJH+yjpy+2qFT4JI2zjZcjs156G/Q==",  # Replace with your Picovoice AccessKey
+#             keyword_paths=[KEYWORD_PATH]
+#         )
+
+#         # -------------------------------
+#         # Initialize PyAudio
+#         # -------------------------------
+#         paud = pyaudio.PyAudio()
+#         audio_stream = paud.open(
+#             rate=porcupine.sample_rate,
+#             channels=1,
+#             format=pyaudio.paInt16,
+#             input=True,
+#             frames_per_buffer=porcupine.frame_length
+#         )
+
+#         print("Say 'SUNDAY' to activate...")
+#         # print("Say 'SUNDAY' to activate...")
+#         # -------------------------------
+#         # Listening loop
+#         # -------------------------------
+#         while True:
+#             pcm = audio_stream.read(porcupine.frame_length, exception_on_overflow=False)
+#             pcm = struct.unpack_from("h" * porcupine.frame_length, pcm)
+
+#             if porcupine.process(pcm) >= 0:
+#                 print("🎉 SUNDAY detected!")
+#                 # Example action on detection
+#                 autogui.keyDown("win")
+#                 autogui.press("o")
+#                 time.sleep(1)
+#                 autogui.keyUp("win")
+
+#     except Exception as e:
+#         print("Error during hotword setup or processing:", e)
+
+#     finally:
+#         # -------------------------------
+#         # Cleanup
+#         # -------------------------------
+#         if porcupine:
+#             porcupine.delete()
+#         if audio_stream:
+#             audio_stream.close()
+#         if paud:
+#             paud.terminate()
+
+
+# # -------------------------------
+# # Run hotword directly for testing
+# # -------------------------------
+# if __name__ == "__main__":
+#     hotword()
 
 # find contacts
 def findContact(query):
