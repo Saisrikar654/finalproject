@@ -82,7 +82,24 @@ $(document).ready(function () {
             PlayAssistant(message);
         }
     });
+    
+    // --- ADDED: ESC Key to Exit Chatbot ---
+    $(document).keydown(function (e) {
+        if (e.keyCode === 27) { // 27 is the ESC key
+            console.log("ESC pressed: Stopping chatbot session...");
+            
+            // Trigger Python to stop speech/logic
+            eel.stop_chatbot_session()();
 
+            // UI Reset
+            $("#SiriWave").attr("hidden", true);
+            $("#Oval").attr("hidden", false);
+            
+            // Clear chatbox
+            $("#chatbox").val("");
+        }
+    });
+    // --------------------------------------
     // Expose this function so Python can call it
 eel.expose(triggerSiriWave);
 function triggerSiriWave() {

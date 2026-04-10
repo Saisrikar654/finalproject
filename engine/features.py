@@ -20,6 +20,8 @@ import pyautogui
 from engine.helper import extract_yt_term, remove_words
 from hugchat import hugchat
 
+
+
 con = sqlite3.connect("sunday.db")
 
 cursor = con.cursor()
@@ -28,6 +30,30 @@ cursor = con.cursor()
 def playAssistantSound():
     music_dri="www\\assets\\audio\\iron-man-repulsor-157371.mp3"
     playsound(music_dri)
+
+
+# --- ADDED SECTION: GLOBAL INTERRUPT FLAG ---
+CHATBOT_INTERRUPTED = False
+# --------------------------------------------
+#-------------------------------------------------------------------------------------------
+
+# --- ADDED SECTION: EXPOSED STOP FUNCTION ---
+@eel.expose
+def stop_chatbot_session():
+    global CHATBOT_INTERRUPTED
+    CHATBOT_INTERRUPTED = True
+    
+    # Forcefully kills the Windows speech process
+    # os.system("taskkill /f /im dotsnet.exe >nul 2>&1")
+    
+    try:
+        import pyttsx3
+        engine = pyttsx3.init()
+        engine.stop() # Clears the speech queue
+    except:
+        pass
+    print("🛑 Session and Speech Stopped.")
+#--------------------------------------------------------------------------------
 
 def openCommand(query):
     query = query.replace(ASSISTANT_NAME, "")
@@ -235,18 +261,44 @@ def whatsApp(mobile_no, message, flag, name):
 
     pyautogui.hotkey('enter')
     speak(sunday_message)
-
+#----------------------------------------------------------------------
 # chat bot 
+# def chatBot(query):
+    # user_input = query.lower()
+    # chatbot = hugchat.ChatBot(cookie_path="engine\cookies.json")
+    # id = chatbot.new_conversation()
+    # chatbot.change_conversation(id)
+    # response =  chatbot.chat(user_input)
+    # # print(response)
+    # speak(response)
+    # return response
+# --- UPDATED CHATBOT LOGIC ---
 def chatBot(query):
+    global CHATBOT_INTERRUPTED
+    CHATBOT_INTERRUPTED = False # Reset flag at start
+    
     user_input = query.lower()
-    chatbot = hugchat.ChatBot(cookie_path="engine\cookies.json")
-    id = chatbot.new_conversation()
-    chatbot.change_conversation(id)
-    response =  chatbot.chat(user_input)
-    # print(response)
-    speak(response)
-    return response
-
+    try:
+        chatbot = hugchat.ChatBot(cookie_path="engine\\cookies.json")
+        id = chatbot.new_conversation()
+        chatbot.change_conversation(id)
+        
+        # Check if ESC was pressed while loading API
+        if CHATBOT_INTERRUPTED: return 
+        
+        response = chatbot.chat(user_input)
+        
+        # ADDED SECTION: CHECK FLAG BEFORE SPEAKING
+        if not CHATBOT_INTERRUPTED:
+            speak(response)
+            return response
+        else:
+            print("Chatbot silent because of ESC.")
+        # ---------------------------------------
+            
+    except Exception as e:
+        print(f"Error: {e}")
+#--------------------------------------------------------------------------------------
 # android automation
 
 def makeCall(name, mobileNo):
@@ -323,8 +375,26 @@ def updatePersonalInfo(name, designation, mobileno, email, city):
     con.commit()
     personalInfo()
     return 1
+# ----------------------------------------------------------
+# @eel.expose
+# def stop_chatbot_session():
+#     # import os
+# # Forcefully kills the Windows speech process
+#     os.system("taskkill /f /im dotsnet.exe >nul 2>&1")
+#     global CHATBOT_INTERRUPTED
+#     CHATBOT_INTERRUPTED = True
+    
+#     # This stops the pyttsx3/SAPI5 engine immediately
+#     try:
+#         import pyttsx3
+#         engine = pyttsx3.init()
+#         engine.stop() # Tells the engine to clear the queue
+#     except:
+#         pass
+        
+#     print("🛑 Session and Speech Stopped.")
 
-
+# ---------------------------------------------------------------
 
 @eel.expose
 def displaySysCommand():
