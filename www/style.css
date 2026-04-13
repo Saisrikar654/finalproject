@@ -397,7 +397,7 @@ svg {
 
 /* Table Scroll Property */
 
-
+/* siri harshitha code start here  */
 body{
     background-color: rgb(0, 0, 0);
     overflow-y: hidden;
@@ -619,7 +619,7 @@ svg {
   animation: change-view 5s ease-in-out infinite alternate;
   filter: drop-shadow(0 0 12px #dd0101);
 }
-
+/* maneesh code end here */
 #big-centro,
 #outter1,
 #solo-lines,
@@ -661,7 +661,9 @@ svg {
     transform: rotate(360deg);
   }
 }
+/* maneesh code end here */
 
+/* rachana code start here */
 .glass-effect {
     /* Lower the last number (0.2) to make it more or less transparent */
     background: rgba(255, 255, 255, 0.1) !important; 
@@ -765,11 +767,11 @@ svg {
 }
 
 /* Glass Effect Modal */
-
+/* rachana code end here */
 
 /* Table Scroll Property */
 
-
+/* siri harshitha code start here */
 .table-scroll {
   height: 270px;
   overflow-y: auto;
@@ -821,3 +823,4 @@ svg {
     --bs-table-color: white !important;
     background-color: transparent !important;
 }
+/* siri harshitha end here */

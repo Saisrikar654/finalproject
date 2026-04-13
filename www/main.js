@@ -1,4 +1,5 @@
 //----------------------------------------------------------------
+// siri harshitha code start here 
 $(document).ready(function () {
 
     // 1. Initialize Eel
@@ -123,9 +124,10 @@ function triggerSiriWave() {
     eel.displaySysCommand()();
     eel.displayWebCommand()();
     eel.displayPhoneBookCommand()();
-
+// siri harshitha code end here 
 
     //execute: python side: 
+    // rachan code start form here 
   eel.expose(getData)
   function getData(user_info) {
     let data = JSON.parse(user_info);
@@ -340,3 +342,4 @@ function ContactDeleteID(clicked_id) {
 }
 
 
+// rachana code end here 
